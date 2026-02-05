@@ -1,0 +1,35 @@
+# Node
+node_modules/
+
+# Environment
+.env
+.env.*
+
+# Certificates and sensitive keys
+certs/
+
+# Logs
+access.log
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Build / cache
+dist/
+build/
+.cache/
+coverage/
+
+# Database files
+*.db
+*.sqlite
+
+# Misc
+/.pnp.*
