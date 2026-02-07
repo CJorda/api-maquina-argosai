@@ -12,7 +12,10 @@ export default function validate(schema, location = 'body') {
       return next();
     } catch (err) {
       if (err instanceof ZodError) {
-        const messages = err.errors.map(e => `${e.path.join('.')}: ${e.message}`).join('; ');
+        const issues = Array.isArray(err.issues) ? err.issues : err.errors;
+        const messages = Array.isArray(issues)
+          ? issues.map(e => `${e.path.join('.')}: ${e.message}`).join('; ')
+          : 'Validation failed';
         return sendProblem(res, 400, 'Bad Request', messages);
       }
       return sendProblem(res, 400, 'Bad Request', 'Invalid request');

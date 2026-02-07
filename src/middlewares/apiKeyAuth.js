@@ -1,10 +1,15 @@
-const apiKey = process.env.API_KEY;
+import crypto from 'crypto';
 
 function apiKeyAuth(req, res, next) {
   try {
+    const apiKey = process.env.API_KEY;
     const key = req.header('x-api-key');
-    if (key && key === apiKey) {
-      return next();
+    if (typeof key === 'string' && typeof apiKey === 'string') {
+      const keyBuf = Buffer.from(key);
+      const apiKeyBuf = Buffer.from(apiKey);
+      if (keyBuf.length === apiKeyBuf.length && crypto.timingSafeEqual(keyBuf, apiKeyBuf)) {
+        return next();
+      }
     }
     res.status(401).json({
       type: "about:blank",

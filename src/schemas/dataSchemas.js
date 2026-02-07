@@ -10,7 +10,7 @@ export const createDataSchema = z.object({
 
 export const getDataQuerySchema = z.object({
   page_size: z.coerce.number().int().positive().max(100).optional(),
-  cursor: z.string().optional(),
+  cursor: z.coerce.number().int().positive().optional(),
   fields: z.string().optional()
 });
 

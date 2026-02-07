@@ -5,17 +5,24 @@
   "description": "Secure API with Express, API Key, HTTPS and rate limiting.",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "compression": "^1.8.1",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
-    "compression": "^1.8.1",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "supertest": "^6.0.0",
+    "vitest": "^1.6.1"
   }
 }
